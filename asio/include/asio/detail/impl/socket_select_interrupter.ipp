@@ -60,7 +60,11 @@ void socket_select_interrupter::open_descriptors()
   memset(&addr, 0, sizeof(addr));
   addr.sin_family = AF_INET;
   addr.sin_addr.s_addr = socket_ops::host_to_network_long(INADDR_LOOPBACK);
+#ifndef __3DS__
   addr.sin_port = 0;
+#else
+  addr.sin_port = 5000;
+#endif
   if (socket_ops::bind(acceptor.get(), (const socket_addr_type*)&addr,
         addr_len, ec) == socket_error_retval)
     asio::detail::throw_error(ec, "socket_select_interrupter");
