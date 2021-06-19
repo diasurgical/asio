@@ -22,6 +22,7 @@
 #if defined(ASIO_WINDOWS) \
   || defined(__CYGWIN__) \
   || defined(__SYMBIAN32__) \
+  || defined(__SWITCH__) \
   || defined(__3DS__)
 
 #include "asio/detail/socket_types.hpp"
