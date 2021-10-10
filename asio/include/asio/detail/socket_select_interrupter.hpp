@@ -23,7 +23,8 @@
   || defined(__CYGWIN__) \
   || defined(__SYMBIAN32__) \
   || defined(__SWITCH__) \
-  || defined(__3DS__)
+  || defined(__3DS__) \
+  || defined(__vita__)
 
 #include "asio/detail/socket_types.hpp"
 

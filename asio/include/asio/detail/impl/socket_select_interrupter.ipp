@@ -23,7 +23,8 @@
   || defined(__CYGWIN__) \
   || defined(__SYMBIAN32__) \
   || defined(__SWITCH__) \
-  || defined(__3DS__)
+  || defined(__3DS__) \
+  || defined(__vita__)
 
 #include <cstdlib>
 #include "asio/detail/socket_holder.hpp"
@@ -96,7 +97,8 @@ void socket_select_interrupter::open_descriptors()
   socket_holder server(socket_ops::accept(acceptor.get(), 0, 0, ec));
   if (server.get() == invalid_socket)
     asio::detail::throw_error(ec, "socket_select_interrupter");
-  
+
+#if !defined(__vita__)
   ioctl_arg_type non_blocking = 1;
   socket_ops::state_type client_state = 0;
   if (socket_ops::ioctl(client.get(), client_state,
@@ -116,6 +118,7 @@ void socket_select_interrupter::open_descriptors()
   opt = 1;
   socket_ops::setsockopt(server.get(), server_state,
       IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt), ec);
+#endif
 
   read_descriptor_ = server.release();
   write_descriptor_ = client.release();
