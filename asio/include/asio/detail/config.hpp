@@ -1787,7 +1787,8 @@
 # if defined(ASIO_HAS_IOCP) \
   || !defined(ASIO_WINDOWS) \
   && !defined(ASIO_WINDOWS_RUNTIME) \
-  && !defined(__CYGWIN__)
+  && !defined(__CYGWIN__) \
+  && !defined(__vita__)
 #  if !defined(__SYMBIAN32__)
 #   if !defined(ASIO_DISABLE_SERIAL_PORT)
 #    define ASIO_HAS_SERIAL_PORT 1
@@ -1842,7 +1843,8 @@
 # if !defined(ASIO_DISABLE_POSIX_STREAM_DESCRIPTOR)
 #  if !defined(ASIO_WINDOWS) \
   && !defined(ASIO_WINDOWS_RUNTIME) \
-  && !defined(__CYGWIN__)
+  && !defined(__CYGWIN__) \
+  && !defined(__vita__)
 #   define ASIO_HAS_POSIX_STREAM_DESCRIPTOR 1
 #  endif // !defined(ASIO_WINDOWS)
          //   && !defined(ASIO_WINDOWS_RUNTIME)

@@ -341,7 +341,7 @@ struct addrinfo_type {
     char* ai_canonname; addrinfo_type* ai_next;
 };
 struct linger_type { u_short_type l_onoff, l_linger; };
-
+struct sockaddr_un_type { u_short_type sun_family; char sun_path[108]; };
 #else
 typedef sockaddr socket_addr_type;
 typedef in_addr in4_addr_type;
