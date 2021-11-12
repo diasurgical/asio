@@ -2856,15 +2856,22 @@ int gethostname(char* name, int namelen, asio::error_code& ec)
     return -1;
   }
 #elif defined(__vita__)
-  if (namelen >= 9)
+  const char* localname = "localhost";
+  size_t locallen = ::strlen(localname) + 1;
+  int result = 0;
+  if (namelen < locallen)
   {
-      name = ::strdup("localhost");
-      return 0;
+      result = -1;
   }
   else
   {
-      return -1;
+    if (namelen < locallen)
+        ::memcpy(name, localname, namelen);
+    else
+        ::memcpy(name, localname, locallen);
   }
+  get_last_error(ec, result != 0);
+  return result;
 #else // defined(ASIO_WINDOWS_RUNTIME)
   int result = ::gethostname(name, namelen);
   get_last_error(ec, result != 0);
