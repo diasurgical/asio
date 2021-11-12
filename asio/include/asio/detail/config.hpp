@@ -1608,20 +1608,22 @@
 # if !defined(ASIO_DISABLE_SIGACTION)
 #  if !defined(ASIO_WINDOWS) \
   && !defined(ASIO_WINDOWS_RUNTIME) \
-  && !defined(__CYGWIN__)
+  && !defined(__CYGWIN__) \
+  && !defined(__vita__)
 #   define ASIO_HAS_SIGACTION 1
 #  endif // !defined(ASIO_WINDOWS)
          //   && !defined(ASIO_WINDOWS_RUNTIME)
          //   && !defined(__CYGWIN__)
+         //   && !defined(__vita__)
 # endif // !defined(ASIO_DISABLE_SIGACTION)
 #endif // !defined(ASIO_HAS_SIGACTION)
 
 // Can use signal().
 #if !defined(ASIO_HAS_SIGNAL)
 # if !defined(ASIO_DISABLE_SIGNAL)
-#  if !defined(UNDER_CE)
+#  if !defined(UNDER_CE) && !defined(__vita__)
 #   define ASIO_HAS_SIGNAL 1
-#  endif // !defined(UNDER_CE)
+#  endif // !defined(UNDER_CE) && !defined(__vita__)
 # endif // !defined(ASIO_DISABLE_SIGNAL)
 #endif // !defined(ASIO_HAS_SIGNAL)
 

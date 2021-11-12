@@ -2858,7 +2858,7 @@ int gethostname(char* name, int namelen, asio::error_code& ec)
 #elif defined(__vita__)
   if (namelen >= 9)
   {
-      name = strdup("localhost");
+      name = ::strdup("localhost");
       return 0;
   }
   else
