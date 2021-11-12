@@ -299,6 +299,7 @@ nobase_include_HEADERS = \
 	asio/detail/type_traits.hpp \
 	asio/detail/utility.hpp \
 	asio/detail/variadic_templates.hpp \
+	asio/detail/vita_compat.hpp \
 	asio/detail/wait_handler.hpp \
 	asio/detail/wait_op.hpp \
 	asio/detail/winapp_thread.hpp \
