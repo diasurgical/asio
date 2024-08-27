@@ -44,7 +44,7 @@ public:
 
   std::string message(int value) const
   {
-#if defined(ASIO_WINDOWS_RUNTIME) || defined(ASIO_WINDOWS_APP)
+#if defined(ASIO_WINDOWS_RUNTIME) || defined(ASIO_WINDOWS_APP) || (defined(ASIO_WINDOWS) && _WIN32_WINNT >= 0x0501)
     std::wstring wmsg(128, wchar_t());
     for (;;)
     {
